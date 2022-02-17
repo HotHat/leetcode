@@ -28,3 +28,14 @@ class Solution:
 
         assert False
 
+    def twoSum2(self, nums: List[int], target: int) -> List[int]:
+        index_map = {}
+        for (idx, val) in enumerate(nums):
+            if val in index_map:
+                return [index_map[val], idx]
+            sub = target - val
+            index_map[sub] = idx
+
+        assert False
+
+
