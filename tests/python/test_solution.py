@@ -1,6 +1,7 @@
 import unittest
 
 import lang.python.s1
+import lang.python.s91
 import lang.python.s104
 import lang.python.s123
 from lang.python.helper import TestCase as Tc, TreeNode
@@ -29,6 +30,22 @@ class TestSolution(unittest.TestCase):
         for case in cases:
             self.assertEqual(s.twoSum2(case.input[0], case.input[1]), case.target)
 
+    def test_s91(self):
+        cases = [
+            Tc("1", 1),
+            Tc("12", 2),
+            Tc("226", 3),
+            Tc("0", 0),
+            Tc("06", 0),
+            Tc("301", 0),
+            Tc("27", 1),
+            Tc("11106", 2),
+            Tc("11601010101", 0),
+        ]
+        s = lang.python.s91.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.numDecodings(case.input))
+
     def test_s104(self):
         cases = [
             Tc(TreeNode(3, TreeNode(9, None, None), TreeNode(20, TreeNode(15, None, None), TreeNode(7, None, None))), 3)
@@ -39,14 +56,14 @@ class TestSolution(unittest.TestCase):
 
     def test_s123(self):
         cases = [
-            # Tc([3, 3, 5, 0, 0, 3, 1, 4], 6),
-            # Tc([0, 3, 1, 4], 6),
-            # Tc([1, 2, 3, 4, 5], 4),
-            # Tc([7, 6, 4, 3, 1], 0),
+            Tc([3, 3, 5, 0, 0, 3, 1, 4], 6),
+            Tc([0, 3, 1, 4], 6),
+            Tc([1, 2, 3, 4, 5], 4),
+            Tc([7, 6, 4, 3, 1], 0),
             Tc([3, 2, 6, 5, 0, 3], 7),
-            # Tc([1, 0, 3], 3),
-            # Tc([1, 3], 2),
-            # Tc([1], 0)
+            Tc([1, 0, 3], 3),
+            Tc([1, 3], 2),
+            Tc([1], 0)
         ]
         s = lang.python.s123.Solution()
         for case in cases:
