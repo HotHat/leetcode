@@ -4,6 +4,7 @@ import lang.python.s1
 import lang.python.s91
 import lang.python.s104
 import lang.python.s121
+import lang.python.s122
 import lang.python.s123
 from lang.python.helper import TestCase as Tc, TreeNode
 
@@ -63,6 +64,16 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s121.Solution()
         for case in cases:
             self.assertEqual(case.target, s.maxProfit(case.input))
+
+    def test_s122(self):
+        cases = [
+            Tc([7, 1, 5, 3, 6, 4], 7),
+            # Tc([7, 6, 5, 3, 1, 1], 0),
+        ]
+        s = lang.python.s122.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.maxProfit(case.input))
+
 
     def test_s123(self):
         cases = [
