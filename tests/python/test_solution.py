@@ -2,6 +2,7 @@ import unittest
 
 import lang.python.s1
 import lang.python.s91
+import lang.python.s96
 import lang.python.s104
 import lang.python.s121
 import lang.python.s122
@@ -47,6 +48,19 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s91.Solution()
         for case in cases:
             self.assertEqual(case.target, s.numDecodings(case.input))
+
+    def test_s96(self):
+        cases = [
+            Tc(10, 16796),
+            Tc(5, 42),
+            Tc(3, 5),
+            Tc(2, 2),
+            Tc(1, 1),
+        ]
+        s = lang.python.s96.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.numTrees(case.input))
+
 
     def test_s104(self):
         cases = [
