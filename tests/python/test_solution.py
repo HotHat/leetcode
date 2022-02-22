@@ -1,9 +1,13 @@
 import unittest
 
 import lang.python.s1
+import lang.python.s22
+import lang.python.s53
+import lang.python.s70
 import lang.python.s91
 import lang.python.s96
 import lang.python.s104
+import lang.python.s119
 import lang.python.s121
 import lang.python.s122
 import lang.python.s123
@@ -32,6 +36,43 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s1.Solution()
         for case in cases:
             self.assertEqual(s.twoSum2(case.input[0], case.input[1]), case.target)
+
+    def test_s22(self):
+        cases = [
+            # Tc(1, ["()"]),
+            # Tc(2, ["(())", "()()"]),
+            # Tc(3, ["((()))", "(()())", "(())()", "()(())", "()()()"]),
+            Tc(4, ["(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())",
+                   "(())()()", "()((()))", "()(()())", "()(())()", "()()(())", "()()()()"]),
+
+            # 1 => 1
+            # 2 => 2
+            # 3 => 5
+            # 4 => 14
+        ]
+        s = lang.python.s22.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.generateParenthesis(case.input))
+
+    def test_s53(self):
+        cases = [
+            Tc([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6),
+            Tc([1], 1),
+            Tc([-1], -1),
+            Tc([5, 4, -1, 7, 8], 23),
+        ]
+        s = lang.python.s53.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.maxSubArray(case.input))
+
+    def test_s70(self):
+        cases = [
+            Tc(2, 2),
+            Tc(3, 3),
+        ]
+        s = lang.python.s70.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.climbStairs(case.input))
 
     def test_s91(self):
         cases = [
@@ -69,6 +110,15 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s104.Solution()
         for case in cases:
             self.assertEqual(s.maxDepth(case.input), case.target)
+
+    def test_s119(self):
+        cases = [
+            Tc(3, [1, 3, 3, 1]),
+            Tc(0, [1])
+        ]
+        s = lang.python.s119.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.getRow(case.input))
 
     def test_s121(self):
         cases = [
