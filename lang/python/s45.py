@@ -21,27 +21,38 @@ class Solution:
         if length == 1:
             return 0
 
-        mx = nums[0]
-        level = 1
-        pos = 0
-        while pos < length - 1:
-            for i in range(pos+1, pos+mx):
-                if cp[i] == 0:
-                    cp[i] = level
+        # first step
+        level = 0
+        # self.add_level(1, 1 + nums[0], cp, level)
+        for i in range(0, length-1):
+            if cp[i] != level:
+                level += 1
 
-            idx = pos+1
-            # mx = nums
-            for i in range(pos+mx, pos, -1):
-                if nums[i] + (i - pos) > mx:
-                    mx = nums[i]
-                    idx = i
-                self.add_level(i, i+nums[i], cp, level+1)
+            if i + 1 + nums[i] > length - 1:
+                return level + 1
+            self.add_level(i + 1, i + 1 + nums[i], cp, level + 1)
 
-            pos = idx
-            level += 1
+        return cp[length - 1]
 
-        return level
-
+        # mx = nums[0]
+        # pos = 0
+        # while pos < length - 1:
+        #     for i in range(pos+1, pos+mx):
+        #         if cp[i] == 0:
+        #             cp[i] = level
+        #
+        #     idx = pos+1
+        #     # mx = nums
+        #     for i in range(pos+mx, pos, -1):
+        #         if nums[i] + (i - pos) > mx:
+        #             mx = nums[i]
+        #             idx = i
+        #         self.add_level(i, i+nums[i], cp, level+1)
+        #
+        #     pos = idx
+        #     level += 1
+        #
+        # return level
 
         # while pos < length - 1:
         #     if pos + nums[pos] >= length:
@@ -69,6 +80,3 @@ class Solution:
                 mx = lst[i]
                 idx = i
         return idx
-
-
-
