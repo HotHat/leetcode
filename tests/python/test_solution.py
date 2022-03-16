@@ -1,6 +1,7 @@
 import unittest
 
 import lang.python.s1
+import lang.python.s8
 import lang.python.s22
 import lang.python.s45
 import lang.python.s53
@@ -37,6 +38,37 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s1.Solution()
         for case in cases:
             self.assertEqual(s.twoSum2(case.input[0], case.input[1]), case.target)
+
+    def test_s8(self):
+        cases = [
+            # Tc("", 0),
+            Tc("-0012a42", -12),
+            Tc("-+12", 0),
+            Tc("00000-42a1234", 0),
+            Tc("21474836460", 2147483647),
+            Tc("+-12", 0),
+            Tc("+1", 1),
+            Tc("+0", 0),
+            Tc("-0", 0),
+            Tc("-+-0", 0),
+            Tc("123", 123),
+            Tc(" 0123", 123),
+            Tc("-123", -123),
+            Tc("   -123", -123),
+            Tc("a", 0),
+            Tc("123a", 123),
+            Tc("2147483647", 2147483647),
+            Tc("2147483648", 2147483647),
+            Tc("21474836490", 2147483647),
+            Tc("-2147483647", -2147483647),
+            Tc("-2147483648", -2147483648),
+            Tc("-2147483649", -2147483648),
+            Tc("-21474836490", -2147483648),
+
+        ]
+        s = lang.python.s8.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.myAtoi(case.input))
 
     def test_s22(self):
         cases = [
