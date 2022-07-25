@@ -4,8 +4,106 @@ class TestCase:
         self.target = target
 
 
+TAG_NUMBER = 1
+
+
+def tag_number():
+    global TAG_NUMBER
+    tag = TAG_NUMBER
+    TAG_NUMBER = TAG_NUMBER + 1
+    return tag
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+        self.__tag = None
+
+    def get_tag(self):
+        if self.__tag is None:
+            self.__tag = tag_number()
+        return self.__tag
+
+    def __str__(self):
+        tag = self.get_tag()
+        l = '' if self.left is None else f"{tag}->{self.left.get_tag()} \n {self.left.__str__()} \n"
+        r = '' if self.right is None else f"{tag}->{self.right.get_tag()} \n {self.right.__str__()} \n"
+        return f"{tag}[label=\"{self.val}\"]\n {l} {r}"
+
+
+class Token:
+    def __init__(self, val, token_type):
+        self.val = val
+        # 1: (; 2: ), 3:string
+        self.type = token_type
+
+    def __str__(self):
+        return f'val: {self.val} type: {self.type}'
+
+
+def parse_binary_tree(s):
+    def token(s):
+        tk = []
+        val = ''
+        for i in s:
+            if i == '(':
+                tk.append(Token(i, 1))
+                continue
+            elif i == ')':
+                if val != '':
+                    tk.append(Token(val, 3))
+                    val = ''
+                tk.append(Token(i, 2))
+                continue
+            elif i == ' ':
+                if val != '':
+                    tk.append(Token(val, 3))
+                    val = ''
+                continue
+            else:
+                val += i
+        return tk
+    # 1: out (); 2 in ()
+    state = 1
+    # for recursion
+    stack = []
+    current = []
+    tk = token(s)
+    for k in tk:
+        if k.type == 1 or k.type == 3:
+            stack.append(k)
+        else:
+            while len(stack) > 0 and (type(stack[-1]) == TreeNode or stack[-1].type != 1):
+                current.append(stack.pop())
+            if len(stack) == 0:
+                raise Exception('parse error')
+            else:
+                # pop (
+                stack.pop()
+            current.reverse()
+            v = l = r = None
+            if len(current) == 1:
+                v = current[0].val
+            elif len(current) == 2:
+                v = current[0].val
+                l = current[1]
+            elif len(current) == 3:
+                v = current[0].val
+                l = current[1]
+                r = current[2]
+            stack.append(TreeNode(v, l, r))
+            current = []
+
+    if len(stack) == 1:
+        return stack[0]
+
+    return None
+
+
+def print_tree(tree):
+    from graphviz import Source
+
+    s = f"digraph G {{{tree}}}"
+    Source(s, filename="test.gv", format="png").view()
