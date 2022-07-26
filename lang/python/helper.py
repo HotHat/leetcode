@@ -75,7 +75,7 @@ def parse_binary_tree(s):
         if k.type == 1 or k.type == 3:
             stack.append(k)
         else:
-            while len(stack) > 0 and (type(stack[-1]) == TreeNode or stack[-1].type != 1):
+            while len(stack) > 0 and (type(stack[-1]) != Token or stack[-1].type != 1):
                 current.append(stack.pop())
             if len(stack) == 0:
                 raise Exception('parse error')
@@ -84,7 +84,10 @@ def parse_binary_tree(s):
                 stack.pop()
             current.reverse()
             v = l = r = None
-            if len(current) == 1:
+            if len(current) == 0:
+                stack.append(None)
+                continue
+            elif len(current) == 1:
                 v = current[0].val
             elif len(current) == 2:
                 v = current[0].val
@@ -100,6 +103,35 @@ def parse_binary_tree(s):
         return stack[0]
 
     return None
+
+
+def parse_pre_order_tree(s):
+    root = None
+
+    stack = []
+    idx = 0
+    ch_idx = 1
+    # while idx < sz:
+    for n in s:
+        if n is not None:
+            c = TreeNode(n)
+            stack.append(c)
+            if root is None:
+                root = c
+        else:
+            c = None
+
+        if len(stack) > 0 and stack[0] != c:
+            # left
+            if ch_idx == 1:
+                stack[0].left = c
+                ch_idx = 2
+            else:
+                stack[0].right = c
+                ch_idx = 1
+                stack.pop(0)
+
+    return root
 
 
 def print_tree(tree):

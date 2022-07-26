@@ -13,7 +13,7 @@ import lang.python.s119
 import lang.python.s121
 import lang.python.s122
 import lang.python.s123
-from lang.python.helper import TestCase as Tc, TreeNode
+from lang.python.helper import TestCase as Tc, TreeNode, parse_binary_tree, print_tree
 
 
 class TestSolution(unittest.TestCase):
@@ -159,6 +159,20 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s96.Solution()
         for case in cases:
             self.assertEqual(case.target, s.numTrees(case.input))
+
+    def test_s98(self):
+        cases = [
+            Tc(parse_binary_tree('(2 (1) (3)'), True),
+            Tc(parse_binary_tree('(5 (1) (4 (3) (6)))'), False),
+            Tc(parse_binary_tree('(5 (4) (6 (3) (7)))'), False),
+            Tc(parse_binary_tree('(3 (1 (0) (2)) (5 (4) (6)))'), True),
+            Tc(parse_binary_tree('(3 (1 (0) (2 () (3) )) (5 (4) (6)))'), False),
+        ]
+        import lang.python.s98
+        s = lang.python.s98.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            self.assertEqual(case.target, s.isValidBST(case.input))
 
     def test_s104(self):
         cases = [
