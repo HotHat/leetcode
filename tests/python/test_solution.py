@@ -176,14 +176,16 @@ class TestSolution(unittest.TestCase):
 
     def test_s99(self):
         cases = [
-            Tc(parse_pre_order_tree([1, 3, None, None, 2]), None),
+            # Tc(parse_pre_order_tree([1, 3, None, None, 2]), None),
             Tc(parse_pre_order_tree([3, 1, 4, None, None, 2]), None),
         ]
         import lang.python.s99
         s = lang.python.s99.Solution()
         for case in cases:
-            # print_tree(case.input)
-            self.assertEqual(case.target, s.recoverTree(case.input))
+            print_tree(case.input)
+            s.recoverTree(case.input)
+            print_tree(case.input)
+            # self.assertEqual(case.target, s.recoverTree(case.input))
 
     def test_s104(self):
         cases = [

@@ -15,18 +15,18 @@ class Solution:
 
             return help(root.left, mn, root.val) and help(root.right, root.val, mx)
             # t = True
-            # if root.left is not None:
-            #     if root.left.val < root.val:
-            #         t = help(root.left, mn, root.val)
+            # if s.left is not None:
+            #     if s.left.val < s.val:
+            #         t = help(s.left, mn, s.val)
             #     else:
             #         return False
             #
             # if not t:
             #     return False
             #
-            # if root.right is not None:
-            #     if root.val < root.right.val:
-            #         t = help(root.right, root.val, mx)
+            # if s.right is not None:
+            #     if s.val < s.right.val:
+            #         t = help(s.right, s.val, mx)
             #     else:
             #         return False
             # return t
