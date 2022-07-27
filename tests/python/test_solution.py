@@ -13,7 +13,7 @@ import lang.python.s119
 import lang.python.s121
 import lang.python.s122
 import lang.python.s123
-from lang.python.helper import TestCase as Tc, TreeNode, parse_binary_tree, print_tree
+from lang.python.helper import TestCase as Tc, TreeNode, parse_binary_tree, print_tree, parse_pre_order_tree
 
 
 class TestSolution(unittest.TestCase):
@@ -173,6 +173,17 @@ class TestSolution(unittest.TestCase):
         for case in cases:
             # print_tree(case.input)
             self.assertEqual(case.target, s.isValidBST(case.input))
+
+    def test_s99(self):
+        cases = [
+            Tc(parse_pre_order_tree([1, 3, None, None, 2]), None),
+            Tc(parse_pre_order_tree([3, 1, 4, None, None, 2]), None),
+        ]
+        import lang.python.s99
+        s = lang.python.s99.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            self.assertEqual(case.target, s.recoverTree(case.input))
 
     def test_s104(self):
         cases = [

@@ -65,6 +65,7 @@ def parse_binary_tree(s):
             else:
                 val += i
         return tk
+
     # 1: out (); 2 in ()
     state = 1
     # for recursion
@@ -139,3 +140,73 @@ def print_tree(tree):
 
     s = f"digraph G {{{tree}}}"
     Source(s, filename="test.gv", format="png").view()
+
+
+def inorder_traver_recursive(root):
+    if root is None:
+        return
+    inorder_traver_recursive(root.left)
+    print(root.val, ' ', end='')
+    inorder_traver_recursive(root.right)
+
+
+def in_order_iterate(root):
+    stack = []
+    s = root
+    while stack or (s is not None):
+        while s is not None:
+            stack.append(s)
+            s = s.left
+        s = stack.pop()
+        print(s.val, ' ', end='')
+        s = s.right
+
+
+def pre_order_recursive(root):
+    if root is None:
+        return
+    print(root.val, ' ', end='')
+    pre_order_recursive(root.left)
+    pre_order_recursive(root.right)
+
+
+def pre_order_iterate(root):
+    stack = []
+    s = root
+    while stack or (s is not None):
+        while s is not None:
+            print(s.val, ' ', end='')
+            stack.append(s)
+            s = s.left
+        s = stack.pop()
+        s = s.right
+
+
+def post_order_recursive(root):
+    if root is None:
+        return
+    post_order_recursive(root.left)
+    post_order_recursive(root.right)
+    print(root.val, ' ', end='')
+
+
+def post_order_iterate(root):
+    """
+    best explain: https://www.jianshu.com/p/456af5480cee
+    """
+    stack = []
+    s = root
+    last_visit = root
+    while stack or (s is not None):
+        while s is not None:
+            stack.append(s)
+            s = s.left
+        s = stack[-1]
+        if s.right is None or s.right == last_visit:
+            print(s.val, ' ', end='')
+            last_visit = s
+            stack.pop()
+            # test stack and pop stack again
+            s = None
+        else:
+            s = s.right
