@@ -26,11 +26,11 @@ class TreeNode:
             self.__tag = tag_number()
         return self.__tag
 
-    def __str__(self):
-        tag = self.get_tag()
-        l = '' if self.left is None else f"{tag}->{self.left.get_tag()} \n {self.left.__str__()} \n"
-        r = '' if self.right is None else f"{tag}->{self.right.get_tag()} \n {self.right.__str__()} \n"
-        return f"{tag}[label=\"{self.val}\"]\n {l} {r}"
+    # def __str__(self):
+    #     tag = self.get_tag()
+    #     l = '' if self.left is None else f"{tag}->{self.left.get_tag()} \n {self.left.__str__()} \n"
+    #     r = '' if self.right is None else f"{tag}->{self.right.get_tag()} \n {self.right.__str__()} \n"
+    #     return f"{tag}[label=\"{self.val}\"]\n {l} {r}"
 
 
 class Token:
@@ -160,6 +160,32 @@ def in_order_iterate(root):
         s = stack.pop()
         print(s.val, ' ', end='')
         s = s.right
+
+
+def morris_in_order(root):
+    def pre_node(root):
+        s = root.left
+        while s.right and s.right != root:
+            s = s.right
+        return s
+
+    s = root
+    while s:
+        if s.left is None:
+            print(s.val, ' ', end='')
+            s = s.right
+        else:
+            p = pre_node(s)
+            if p.right:
+                print(s.val, ' ', end='')
+                s = s.right
+                p.right = None
+            else:
+                p.right = s
+                s = s.left
+
+
+
 
 
 def pre_order_recursive(root):
