@@ -39,7 +39,8 @@ class TestHelper(unittest.TestCase):
         in_order_iterate(root)
 
     def test_parse5(self):
-        root = parse_binary_tree('(1 (2 (4 () (6 (7) (8)))) (3 () (5)))')
+        # root = parse_binary_tree('(1 (2 (4 () (6 (7) (8)))) (3 () (5)))')
+        root = parse_pre_order_tree([1, 2, 2, 3, 4, 4, 3])
         # print_tree(s)
         post_order_recursive(root)
 
@@ -47,3 +48,18 @@ class TestHelper(unittest.TestCase):
         root = parse_binary_tree('(1 (2 (4 () (6 (7) (8)))) (3 () (5)))')
         # print_tree(s)
         post_order_iterate(root)
+
+    def test_r(self):
+        def sym(ar):
+            sz = len(ar)
+            for i in range(sz):
+                s = sz - i - 1
+                if i >= s:
+                    break
+                if ar[i] != ar[s]:
+                    return False
+            return True
+        t = sym([1, 3, 2, None, 2, 3, 1])
+        print(t)
+
+

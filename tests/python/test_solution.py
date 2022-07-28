@@ -187,6 +187,18 @@ class TestSolution(unittest.TestCase):
             print_tree(case.input)
             # self.assertEqual(case.target, s.recoverTree(case.input))
 
+    def test_s101(self):
+        cases = [
+            Tc(parse_pre_order_tree([1, 2, 2, 3, 4, 4, 3]), True),
+            Tc(parse_pre_order_tree([1, 2, 2, None, 3, None, 3]), False),
+            Tc(parse_pre_order_tree([1, 2, 3]), False),
+            Tc(parse_pre_order_tree([1, 2, 2, 3, 4, 4, 3]), True),
+        ]
+        import lang.python.s101
+        s = lang.python.s101.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.isSymmetric(case.input))
+
     def test_s104(self):
         cases = [
             Tc(TreeNode(3, TreeNode(9, None, None), TreeNode(20, TreeNode(15, None, None), TreeNode(7, None, None))), 3)
