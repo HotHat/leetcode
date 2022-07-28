@@ -189,6 +189,17 @@ class TestSolution(unittest.TestCase):
 
     def test_s101(self):
         cases = [
+            Tc([parse_pre_order_tree([1, 2, 3]), parse_pre_order_tree([1, 2, 3])], True),
+            Tc([parse_pre_order_tree([1, 2]), parse_pre_order_tree([1, None, 2])], True),
+            Tc([parse_pre_order_tree([1, 2, 1]), parse_pre_order_tree([1, 1, 2])], True),
+        ]
+        import lang.python.s100
+        s = lang.python.s100.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.isSameTree(case.input[0], case.input[1]))
+
+    def test_s101(self):
+        cases = [
             Tc(parse_pre_order_tree([1, 2, 2, 3, 4, 4, 3]), True),
             Tc(parse_pre_order_tree([1, 2, 2, None, 3, None, 3]), False),
             Tc(parse_pre_order_tree([1, 2, 3]), False),
