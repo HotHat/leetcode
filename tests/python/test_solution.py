@@ -242,6 +242,18 @@ class TestSolution(unittest.TestCase):
             r = get_binary_level(s.buildTree(case.input[0], case.input[1]))
             self.assertEqual(case.target, r)
 
+    def test_s106(self):
+        cases = [
+            Tc([[9, 3, 15, 20, 7], [9, 15, 7, 20, 3]], [3, 9, 20, None, None, 15, 7]),
+            Tc([[-1], [-1]], [-1]),
+        ]
+        import lang.python.s106
+        s = lang.python.s106.Solution()
+        for case in cases:
+            r = get_binary_level(s.buildTree(case.input[0], case.input[1]))
+            self.assertEqual(case.target, r)
+
+
     def test_s119(self):
         cases = [
             Tc(3, [1, 3, 3, 1]),
