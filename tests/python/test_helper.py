@@ -1,7 +1,8 @@
 import unittest
 from helper import parse_binary_tree, print_tree, \
     parse_pre_order_tree, inorder_traver_recursive, in_order_iterate, \
-    pre_order_recursive, pre_order_iterate, post_order_recursive, post_order_iterate, morris_in_order
+    pre_order_recursive, pre_order_iterate, post_order_recursive, post_order_iterate, morris_in_order, \
+    get_binary_level
 
 
 class TestHelper(unittest.TestCase):
@@ -61,5 +62,9 @@ class TestHelper(unittest.TestCase):
             return True
         t = sym([1, 3, 2, None, 2, 3, 1])
         print(t)
+
+    def test_print_level(self):
+        root = parse_pre_order_tree([3, 9, 20, None, None, 15, 7])
+        print(get_binary_level(root))
 
 

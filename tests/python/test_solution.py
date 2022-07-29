@@ -13,7 +13,8 @@ import lang.python.s119
 import lang.python.s121
 import lang.python.s122
 import lang.python.s123
-from lang.python.helper import TestCase as Tc, TreeNode, parse_binary_tree, print_tree, parse_pre_order_tree
+from lang.python.helper import TestCase as Tc, TreeNode, parse_binary_tree, print_tree, \
+    parse_pre_order_tree, get_binary_level
 
 
 class TestSolution(unittest.TestCase):
@@ -210,6 +211,17 @@ class TestSolution(unittest.TestCase):
         for case in cases:
             self.assertEqual(case.target, s.isSymmetric(case.input))
 
+    def test_s103(self):
+        cases = [
+            Tc(parse_pre_order_tree([3, 9,  20, None, None, 15, 7]), [[3], [20, 9], [15, 7]]),
+            Tc(parse_pre_order_tree([1]), [[1]]),
+            Tc(parse_pre_order_tree([]), []),
+        ]
+        import lang.python.s103
+        s = lang.python.s103.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.zigzagLevelOrder(case.input))
+
     def test_s104(self):
         cases = [
             Tc(TreeNode(3, TreeNode(9, None, None), TreeNode(20, TreeNode(15, None, None), TreeNode(7, None, None))), 3)
@@ -217,6 +229,18 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s104.Solution()
         for case in cases:
             self.assertEqual(s.maxDepth(case.input), case.target)
+
+    def test_s105(self):
+        cases = [
+            Tc([[20, 15, 7], [15, 20, 7]], [20, 15, 7]),
+            Tc([[3, 9, 20, 15, 7], [9, 3, 15, 20, 7]], [3, 9, 20, None, None, 15, 7]),
+            Tc([[-1], [-1]], [-1]),
+        ]
+        import lang.python.s105
+        s = lang.python.s105.Solution()
+        for case in cases:
+            r = get_binary_level(s.buildTree(case.input[0], case.input[1]))
+            self.assertEqual(case.target, r)
 
     def test_s119(self):
         cases = [

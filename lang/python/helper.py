@@ -185,9 +185,6 @@ def morris_in_order(root):
                 s = s.left
 
 
-
-
-
 def pre_order_recursive(root):
     if root is None:
         return
@@ -236,3 +233,22 @@ def post_order_iterate(root):
             s = None
         else:
             s = s.right
+
+
+def get_binary_level(root):
+    if root is None:
+        return []
+    lst = [root]
+    r = []
+    while lst:
+        p = lst.pop(0)
+        if p:
+            r.append(p.val)
+            lst.append(p.left)
+            lst.append(p.right)
+        else:
+            r.append(None)
+
+    while r and r[-1] is None:
+        r.pop()
+    return r
