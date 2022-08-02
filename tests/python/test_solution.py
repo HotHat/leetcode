@@ -213,7 +213,7 @@ class TestSolution(unittest.TestCase):
 
     def test_s103(self):
         cases = [
-            Tc(parse_pre_order_tree([3, 9,  20, None, None, 15, 7]), [[3], [20, 9], [15, 7]]),
+            Tc(parse_pre_order_tree([3, 9, 20, None, None, 15, 7]), [[3], [20, 9], [15, 7]]),
             Tc(parse_pre_order_tree([1]), [[1]]),
             Tc(parse_pre_order_tree([]), []),
         ]
@@ -276,6 +276,19 @@ class TestSolution(unittest.TestCase):
             r = get_binary_level(s.sortedListToBST(case.input))
             print(r)
             self.assertEqual(case.target, r)
+
+    def test_s110(self):
+        from helper import ListNode
+        cases = [
+            # Tc(parse_pre_order_tree([3, 9, 20, None, None, 15, 7]), True),
+            # Tc(parse_pre_order_tree([1, 2, 2, 3, 3, None, None, 4, 4]), False),
+            Tc(parse_pre_order_tree([1, 2, 2, 3, None, None, 3, 4, None, None, 4]), False),
+            # Tc(None, True),
+        ]
+        import lang.python.s110
+        s = lang.python.s110.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.isBalanced(case.input))
 
     def test_s119(self):
         cases = [

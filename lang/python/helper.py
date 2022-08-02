@@ -32,11 +32,21 @@ class TreeNode:
             self.__tag = tag_number()
         return self.__tag
 
-    # def __str__(self):
-    #     tag = self.get_tag()
-    #     l = '' if self.left is None else f"{tag}->{self.left.get_tag()} \n {self.left.__str__()} \n"
-    #     r = '' if self.right is None else f"{tag}->{self.right.get_tag()} \n {self.right.__str__()} \n"
-    #     return f"{tag}[label=\"{self.val}\"]\n {l} {r}"
+    def __str__(self):
+        tag = self.get_tag()
+        if self.left:
+            l = f"{tag}->{self.left.get_tag()} \n {self.left.__str__()} \n"
+        else:
+            nil = tag_number()
+            l = f"{tag}->{nil}\n{nil}[label=\"nil\"]"
+
+        if self.right:
+            r = f"{tag}->{self.right.get_tag()} \n {self.right.__str__()} \n"
+        else:
+            nil = tag_number()
+            r = f"{tag}->{nil}\n{nil}[label=\"nil\"]"
+
+        return f"{tag}[label=\"{self.val}\"]\n {l} {r}"
 
 
 class Token:
