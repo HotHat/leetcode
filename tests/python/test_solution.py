@@ -253,6 +253,29 @@ class TestSolution(unittest.TestCase):
             r = get_binary_level(s.buildTree(case.input[0], case.input[1]))
             self.assertEqual(case.target, r)
 
+    def test_s107(self):
+        cases = [
+            Tc(parse_pre_order_tree([3, 9, 20, None, None, 15, 7]), [[15, 7], [9, 20], [3]]),
+            Tc(parse_pre_order_tree([1]), [[1]]),
+            Tc(parse_pre_order_tree([]), []),
+        ]
+        import lang.python.s107
+        s = lang.python.s107.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.levelOrderBottom(case.input))
+
+    def test_s109(self):
+        from helper import ListNode
+        cases = [
+            Tc(ListNode(-10, ListNode(-3, ListNode(0, ListNode(5, ListNode(9, None))))), [0, -3, 9, -10, None, 5]),
+            Tc(None, []),
+        ]
+        import lang.python.s109
+        s = lang.python.s109.Solution()
+        for case in cases:
+            r = get_binary_level(s.sortedListToBST(case.input))
+            print(r)
+            self.assertEqual(case.target, r)
 
     def test_s119(self):
         cases = [
