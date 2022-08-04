@@ -294,7 +294,7 @@ class TestSolution(unittest.TestCase):
         from helper import ListNode
         cases = [
             # Tc(parse_pre_order_tree([3, 9, 20, None, None, 15, 7]), 2),
-            Tc(parse_pre_order_tree([2, None, 3, None, 4,  None, 5, None, 6]), 5),
+            Tc(parse_pre_order_tree([2, None, 3, None, 4, None, 5, None, 6]), 5),
         ]
         import lang.python.s111
         s = lang.python.s111.Solution()
@@ -312,6 +312,19 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s112.Solution()
         for case in cases:
             self.assertEqual(case.target, s.hasPathSum(case.input[0], case.input[1]))
+
+    def test_s113(self):
+        cases = [
+            Tc([parse_pre_order_tree([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1]), 22],
+               [[5, 4, 11, 2], [5, 8, 4, 5]]),
+            Tc([parse_pre_order_tree([1, 2, 3]), 5], []),
+            Tc([parse_pre_order_tree([1, 2]), 0], []),
+            Tc([parse_pre_order_tree([]), 0], []),
+        ]
+        import lang.python.s113
+        s = lang.python.s113.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.pathSum(case.input[0], case.input[1]))
 
     def test_s119(self):
         cases = [
