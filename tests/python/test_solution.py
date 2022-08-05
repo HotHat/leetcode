@@ -315,16 +315,18 @@ class TestSolution(unittest.TestCase):
 
     def test_s113(self):
         cases = [
-            Tc([parse_pre_order_tree([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1]), 22],
-               [[5, 4, 11, 2], [5, 8, 4, 5]]),
-            Tc([parse_pre_order_tree([1, 2, 3]), 5], []),
-            Tc([parse_pre_order_tree([1, 2]), 0], []),
-            Tc([parse_pre_order_tree([]), 0], []),
+            Tc(parse_pre_order_tree([1, 2, 5, 3, 4, None, 6]), [1, None, 2, None, 3, None, 4, None, 5, None, 6]),
+            # Tc(parse_pre_order_tree([]), []),
+            # Tc(parse_pre_order_tree([0]), [0]),
         ]
-        import lang.python.s113
-        s = lang.python.s113.Solution()
+        import lang.python.s114
+        s = lang.python.s114.Solution()
         for case in cases:
-            self.assertEqual(case.target, s.pathSum(case.input[0], case.input[1]))
+            # print_tree(case.input)
+            s.flatten(case.input)
+            print_tree(case.input)
+            p = get_binary_level(case.input)
+            self.assertEqual(case.target, p)
 
     def test_s119(self):
         cases = [
@@ -367,3 +369,22 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s123.Solution()
         for case in cases:
             self.assertEqual(case.target, s.maxProfit(case.input))
+
+    def test_s173(self):
+        cases = [
+            Tc(parse_pre_order_tree([7, 3, 15, None, None, 9, 20]), [3, 7, True, 9, True, 15, True, 20, False]),
+        ]
+        from lang.python.s173 import BSTIterator
+        for case in cases:
+            r = []
+            bSTIterator = BSTIterator(case.input)
+            r.append(bSTIterator.next())
+            r.append(bSTIterator.next())
+            r.append(bSTIterator.hasNext())
+            r.append(bSTIterator.next())
+            r.append(bSTIterator.hasNext())
+            r.append(bSTIterator.next())
+            r.append(bSTIterator.hasNext())
+            r.append(bSTIterator.next())
+            r.append(bSTIterator.hasNext())
+            self.assertEqual(case.target, r)
