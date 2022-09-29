@@ -398,8 +398,8 @@ class TestSolution(unittest.TestCase):
 
     def test_s124(self):
         cases = [
-            # Tc(parse_pre_order_tree([1, 2, 3]), 6),
-            # Tc(parse_pre_order_tree([-10, 9, 20, None, None, 15, 7]), 42),
+            Tc(parse_pre_order_tree([1, 2, 3]), 6),
+            Tc(parse_pre_order_tree([-10, 9, 20, None, None, 15, 7]), 42),
             Tc(parse_pre_order_tree([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1]), 48),
         ]
         import lang.python.s124
@@ -407,6 +407,16 @@ class TestSolution(unittest.TestCase):
         for case in cases:
             print_tree(case.input)
             self.assertEqual(case.target, s.maxPathSum(case.input))
+
+    def test_s129(self):
+        cases = [
+            # Tc(parse_pre_order_tree([1, 2, 3]), 25),
+            Tc(parse_pre_order_tree([4, 9, 0, 5, 1]), 1026),
+        ]
+        import lang.python.s129
+        s = lang.python.s129.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.sumNumbers(case.input))
 
     def test_s173(self):
         cases = [
