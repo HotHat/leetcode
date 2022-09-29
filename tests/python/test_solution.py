@@ -328,6 +328,32 @@ class TestSolution(unittest.TestCase):
             p = get_binary_level(case.input)
             self.assertEqual(case.target, p)
 
+    def test_s116(self):
+        cases = [
+            Tc(parse_pre_order_tree([1, 2, 3, 4, 5, 6, 7]), [1, '#', 2, 3, '#', 4, 5, 6, 7, '#']),
+        ]
+        import lang.python.s116
+        s = lang.python.s116.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            p = s.connect(case.input)
+            # s.connect(case.input)
+            # p = get_binary_level(case.input)
+            self.assertEqual(case.target, p)
+
+    def test_s117(self):
+        cases = [
+            Tc(parse_pre_order_tree([1, 2, 3, 4, 5, None, 7]), [1, '#', 2, 3, '#', 4, 5, 6, 7, '#']),
+        ]
+        import lang.python.s117
+        s = lang.python.s117.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            p = s.connect(case.input)
+            # s.connect(case.input)
+            # p = get_binary_level(case.input)
+            self.assertEqual(case.target, p)
+
     def test_s119(self):
         cases = [
             Tc(3, [1, 3, 3, 1]),
@@ -369,6 +395,18 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s123.Solution()
         for case in cases:
             self.assertEqual(case.target, s.maxProfit(case.input))
+
+    def test_s124(self):
+        cases = [
+            # Tc(parse_pre_order_tree([1, 2, 3]), 6),
+            # Tc(parse_pre_order_tree([-10, 9, 20, None, None, 15, 7]), 42),
+            Tc(parse_pre_order_tree([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1]), 48),
+        ]
+        import lang.python.s124
+        s = lang.python.s124.Solution()
+        for case in cases:
+            print_tree(case.input)
+            self.assertEqual(case.target, s.maxPathSum(case.input))
 
     def test_s173(self):
         cases = [
