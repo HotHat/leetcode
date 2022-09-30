@@ -476,3 +476,14 @@ class TestSolution(unittest.TestCase):
             r = s.kthSmallest(case.input[0], case.input[1])
             self.assertEqual(case.target, r)
 
+    def test_s235(self):
+        cases = [
+            # Tc(parse_pre_order_tree([4, 2, 7, 1, 3, 6, 9]), []),
+            Tc([parse_pre_order_tree([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5]), 2, 5], 1),
+            # Tc([parse_pre_order_tree([5, 3, 6, 2, 4, None, None, 1]), 3], 3),
+        ]
+        import lang.python.s235
+        s = lang.python.s235.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            r = s.lowestCommonAncestor(case.input[0], case.input[1], case.input[2])
