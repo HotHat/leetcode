@@ -436,3 +436,17 @@ class TestSolution(unittest.TestCase):
             r.append(bSTIterator.next())
             r.append(bSTIterator.hasNext())
             self.assertEqual(case.target, r)
+
+    def test_s199(self):
+        cases = [
+            # Tc(parse_pre_order_tree([1, 2, 3]), 25),
+            # Tc(parse_pre_order_tree([1, 2, 3, None, 5, None, 4]), [1, 3, 4]),
+            Tc(parse_pre_order_tree([1, 2, 3, None, 5, None, 4]), [1, 3, 4]),
+            Tc(parse_pre_order_tree([1, None, 3]), [1, 3]),
+            Tc(parse_pre_order_tree([]), []),
+        ]
+        import lang.python.s199
+        s = lang.python.s199.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            self.assertEqual(case.target, s.rightSideView(case.input))
