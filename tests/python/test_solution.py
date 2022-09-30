@@ -450,3 +450,29 @@ class TestSolution(unittest.TestCase):
         for case in cases:
             # print_tree(case.input)
             self.assertEqual(case.target, s.rightSideView(case.input))
+
+    def test_s222(self):
+        cases = [
+            Tc(parse_pre_order_tree([1, 2, 3, 4, 5, 6]), 6),
+            Tc(parse_pre_order_tree([]), 0),
+            Tc(parse_pre_order_tree([1]), 1),
+            Tc(parse_pre_order_tree([1, 2, 3, 4, 5, 6, 7]), 7),
+        ]
+        import lang.python.s222
+        s = lang.python.s222.Solution()
+        for case in cases:
+            self.assertEqual(case.target, s.countNodes(case.input))
+
+    def test_s226(self):
+        cases = [
+            # Tc(parse_pre_order_tree([4, 2, 7, 1, 3, 6, 9]), []),
+            Tc([parse_pre_order_tree([3, 1, 4, None, 2]), 1], 1),
+            Tc([parse_pre_order_tree([5, 3, 6, 2, 4, None, None, 1]), 3], 3),
+        ]
+        import lang.python.s230
+        s = lang.python.s230.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            r = s.kthSmallest(case.input[0], case.input[1])
+            self.assertEqual(case.target, r)
+
