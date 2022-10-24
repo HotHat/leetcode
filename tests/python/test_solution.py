@@ -487,3 +487,15 @@ class TestSolution(unittest.TestCase):
         for case in cases:
             # print_tree(case.input)
             r = s.lowestCommonAncestor(case.input[0], case.input[1], case.input[2])
+
+    def test_s257(self):
+        cases = [
+            Tc(parse_pre_order_tree([1, 2, 3, None, 5]), ["1->2->5", "1->3"]),
+            Tc(parse_pre_order_tree([1]), ["1"]),
+        ]
+        import lang.python.s257
+        s = lang.python.s257.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            r = s.binaryTreePaths(case.input)
+            self.assertEqual(case.target, r)
