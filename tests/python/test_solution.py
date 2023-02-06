@@ -499,3 +499,32 @@ class TestSolution(unittest.TestCase):
             # print_tree(case.input)
             r = s.binaryTreePaths(case.input)
             self.assertEqual(case.target, r)
+
+    def test_s257(self):
+        case = parse_pre_order_tree([1, 2, -13, None, None, 4, 5])
+        import lang.python.s297
+        s = lang.python.s297.Codec()
+        r1 = s.serialize(case)
+        print(r1)
+        # print_tree(case)
+
+        r = s.deserialize(r1)
+        # print(r)
+        # print(s.serialize(r))
+        # print_tree(r)
+        self.assertEqual(r1, s.serialize(r))
+
+    def test_331(self):
+        cases = [
+            '9,3,4,#,#,1,#,#,2,#,6,#,#',
+            '1,#',
+            '9,#,#,1',
+            '#',
+            '1,#,#,#,#'
+        ]
+        import lang.python.s331
+        s = lang.python.s331.Solution()
+        for case in cases:
+            r1 = s.isValidSerialization(case)
+            print(r1)
+        # print_tree(case)
