@@ -520,7 +520,9 @@ class TestSolution(unittest.TestCase):
             '1,#',
             '9,#,#,1',
             '#',
-            '1,#,#,#,#'
+            '1,#,#,#,#',
+            "#,7,6,9,#,#,#",
+            "9,3,4,#,#,1,#,#,#,2,#,6,#,#"
         ]
         import lang.python.s331
         s = lang.python.s331.Solution()
