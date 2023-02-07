@@ -530,3 +530,50 @@ class TestSolution(unittest.TestCase):
             r1 = s.isValidSerialization(case)
             print(r1)
         # print_tree(case)
+
+    def test_404(self):
+        cases = [
+            # Tc(parse_pre_order_tree([3, 2, 3, None, 3, None, 1]), 7),
+            Tc(parse_pre_order_tree([3, 9, 20, None, None, 15, 7]), 24),
+            Tc(parse_pre_order_tree([1]), 0),
+            Tc(parse_pre_order_tree([1, 2, 3, 4, 5]), 4),
+        ]
+        import lang.python.s404
+        s = lang.python.s404.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            r = s.sumOfLeftLeaves(case.input)
+            self.assertEqual(case.target, r)
+
+    def test_437(self):
+        cases = [
+            # Tc(parse_pre_order_tree([3, 2, 3, None, 3, None, 1]), 7),
+            # Tc((parse_pre_order_tree([10, 5, -3, 3, 2, None, 11, 3, -2, None, 1]), 8), 3),
+            Tc((parse_pre_order_tree([1, -2, -3, 1, 3, -2, None, -1]), -1), 4),
+
+        ]
+        import lang.python.s437
+        s = lang.python.s437.Solution()
+        for case in cases:
+            # print_tree(case.input)
+            r = s.pathSum(case.input[0], case.input[1])
+            self.assertEqual(case.target, r)
+
+    def test_s449(self):
+        case = parse_pre_order_tree(
+            [41, 37, 44, 24, 39, 42, 48, 1, 35, 38, 40, None, 43, 46, 49, 0, 2, 30, 36, None, None, None, None, None,
+             None, 45, 47, None, None, None, None, None, 4, 29, 32, None, None, None, None, None, None, 3, 9, 26, None,
+             31, 34, None, None, 7, 11, 25, 27, None, None, 33, None, 6, 8, 10, 16, None, None, None, 28, None, None, 5,
+             None, None, None, None, None, 15, 19, None, None, None, None, 12, None, 18, 20, None, 13, 17, None, None,
+             22, None, 14, None, None, 21, 23])
+        import lang.python.s449
+        s = lang.python.s449.Codec()
+        r1 = s.serialize(case)
+        # print(r1)
+        # print_tree(case)
+
+        r = s.deserialize(r1)
+        # print(r)
+        print(s.serialize(r))
+        # print_tree(r)
+        # self.assertEqual(r1, s.serialize(r))
