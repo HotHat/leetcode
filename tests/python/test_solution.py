@@ -500,7 +500,7 @@ class TestSolution(unittest.TestCase):
             r = s.binaryTreePaths(case.input)
             self.assertEqual(case.target, r)
 
-    def test_s257(self):
+    def test_s297(self):
         case = parse_pre_order_tree([1, 2, -13, None, None, 4, 5])
         import lang.python.s297
         s = lang.python.s297.Codec()
@@ -528,6 +528,19 @@ class TestSolution(unittest.TestCase):
         s = lang.python.s331.Solution()
         for case in cases:
             r1 = s.isValidSerialization(case)
+            print(r1)
+        # print_tree(case)
+
+    def test_337(self):
+        cases = [
+            # [3, 2, 3, None, 3, None, 1]
+            [79, 99, 77, None, None, None, 69, None, 60, 53, None, 73, 11, None, None, None, 62, 27, 62, None, None, 50, 98, None, None, 90, 48, 82, None, None, None, 55, 64, None, None, 73, 56, 6, 47, None, 93, None, None, 75, 44, 30, 82, None, None, None, None, None, None, 57, 36, 89, 42, None, None, 76, 10, None, None, None, None, None, 32, 4, 18, None, None, 1, 7, None, None, 42, 64, None, None, 39, 76, None, None, 6, None, 66, 8, 96, 91, 38, 38, None, None, None, None, 74, 42, None, None, None, 10, 40, 5, None, None, None, None, 28, 8, 24, 47, None, None, None, 17, 36, 50, 19, 63, 33, 89, None, None, None, None, None, None, None, None, 94, 72, None, None, 79, 25, None, None, 51, None, 70, 84, 43, None, 64, 35, None, None, None, None, 40, 78, None, None, 35, 42, 98, 96, None, None, 82, 26, None, None, None, None, 48, 91, None, None, 35, 93, 86, 42, None, None, None, None, 0, 61, None, None, 67, None, 53, 48, None, None, 82, 30, None, 97, None, None, None, 1, None, None]
+        ]
+        import lang.python.s337
+        s = lang.python.s337.Solution()
+        for case in cases:
+            root = parse_pre_order_tree(case)
+            r1 = s.rob(root)
             print(r1)
         # print_tree(case)
 
@@ -577,3 +590,15 @@ class TestSolution(unittest.TestCase):
         print(s.serialize(r))
         # print_tree(r)
         # self.assertEqual(r1, s.serialize(r))
+
+    def test_s450(self):
+        case = parse_pre_order_tree([3, 2, 4, 1])
+        print_tree(case)
+        import lang.python.s450
+        s = lang.python.s450.Solution()
+        r = s.deleteNode(case, 2)
+        print_tree(r)
+        import lang.python.s297
+        s = lang.python.s297.Codec()
+        r1 = s.serialize(r)
+        print(r1)
